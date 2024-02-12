@@ -1,29 +1,29 @@
 class Solution {
 public:
-    string reverseWords(string str) {
-    string temp = "", ans = "";
-	for(int i=str.size()-1;i>=0;i--)
-    {
-        if(str[i]==32 && temp=="") continue;
-        if (str[i] != 32)
+    string reverseWords(string s) {
+        string temp="", ans="";
+        for(int i=s.size()-1;i>=0;i--)
         {
-            temp = str[i] + temp;
+            if(s[i]==' ' && temp=="") continue;
+            if(s[i]!=' ')
+            {
+                temp=s[i]+temp;
+            }
+            else
+            {
+                ans+=temp;
+                ans+=' ';
+                temp="";
+            }
+            
         }
-        
-        else
+        ans+=temp;
+        int tot=ans.size()-1;
+        while(ans[tot]==' ')
         {
-           ans += temp;
-           ans+=' ';
-           temp = "";
+            ans=ans.substr(0,tot);
+            tot--;
         }
+        return ans;
     }
-    ans += temp;
-        int c=ans.size()-1;
-        while(ans[c--]==' ')
-        {
-            ans=ans.substr(0,ans.size()-1);
-        }
-    return ans;
-    
-}
 };
